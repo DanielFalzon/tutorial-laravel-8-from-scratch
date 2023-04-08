@@ -23,7 +23,7 @@ Route::get('/', function () {
 //        \Illuminate\Support\Facades\Log::info($query->sql, $query->bindings);
 //    });
     return view(view: 'posts', data: [
-        'posts' => Post::latest()->with('category', 'author')->get()
+        'posts' => Post::latest()->get()
     ]);
 });
 
