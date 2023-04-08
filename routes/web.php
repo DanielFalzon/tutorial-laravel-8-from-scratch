@@ -18,8 +18,11 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
+//    \Illuminate\Support\Facades\DB::listen(function ($query){
+//        \Illuminate\Support\Facades\Log::info($query->sql, $query->bindings);
+//    });
     return view(view: 'posts', data: [
-        'posts' => Post::all()
+        'posts' => Post::with('category')->get()
     ]);
 });
 
