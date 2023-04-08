@@ -12,4 +12,11 @@ class Post extends Model
     //protected $guarded = [] allows any values to be mass-assigned.
     //protected $guarded = ['id'];
     protected $fillable = ['title', 'excerpt', 'body'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+
 }
