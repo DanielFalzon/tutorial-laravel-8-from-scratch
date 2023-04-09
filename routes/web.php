@@ -23,27 +23,31 @@ Route::get('/', function () {
 //        \Illuminate\Support\Facades\Log::info($query->sql, $query->bindings);
 //    });
     return view(view: 'posts', data: [
-        'posts' => Post::latest()->get()
+        'posts' => Post::latest()->get(),
+        'categories' => Category::all()
     ]);
 });
 
 //route model binding
 //1. Wildcard name must match the model name + variable name
-Route::get('/post/{post}', function (Post $post){
+Route::get('/post/{post}', function (Post $post) {
     return view('post', [
         'post' => $post
     ]);
 }); //->whereAlpha, ->whereNumeric, options to add constraints to wildcard
 
-Route::get('/categories/{category}', function (Category $category){
+Route::get('/categories/{category}', function (Category $category) {
     return view(view: 'posts', data: [
-        'posts' => $category->posts
+        'posts' => $category->posts,
+        'currentCategory' => $category,
+        'categories' => Category::all()
     ]);
 });
 
-Route::get('/authors/{author:username}', function (User $author){
+Route::get('/authors/{author:username}', function (User $author) {
     return view(view: 'posts', data: [
-        'posts' => $author->posts
+        'posts' => $author->posts,
+        'categories' => Category::all()
     ]);
 });
 
