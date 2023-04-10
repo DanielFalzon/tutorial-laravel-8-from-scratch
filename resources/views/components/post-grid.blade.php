@@ -12,6 +12,6 @@
         @endforeach
 
     </div>
-@else
+@elseif(($posts->count() < 1) )
     <p>No posts yet. Please come back later</p>
 @endif
