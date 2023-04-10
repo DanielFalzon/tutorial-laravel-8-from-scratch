@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,27 +17,11 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-Route::get('/', function () {
-
-    $posts = Post::latest();
-
-    if (request('search')){
-        $posts->where('title', 'like', '% ' . request('search') . '%')->orWhere('body', 'like', '%' . request('search') . '%');
-    }
-
-    return view(view: 'posts', data: [
-        'posts' => $posts->get(),
-        'categories' => Category::all()
-    ]);
-})->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
 
 //route model binding
 //1. Wildcard name must match the model name + variable name
-Route::get('/post/{post}', function (Post $post) {
-    return view('post', [
-        'post' => $post
-    ]);
-}); //->whereAlpha, ->whereNumeric, options to add constraints to wildcard
+Route::get('/post/{post}', [PostController::class, 'show']); //->whereAlpha, ->whereNumeric, options to add constraints to wildcard
 
 Route::get('/categories/{category}', function (Category $category) {
     return view(view: 'posts', data: [
