@@ -24,11 +24,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'with-posts'
         ]);
         Post::factory(5)->create([
-            'user_id' => $user->id,
             'category_id' => $category->id
         ]);
-        Post::factory(25)->create([
+        Post::factory(5)->create([
             'user_id' => $user->id
         ]);
+        Post::factory(20)->create();
     }
 }
