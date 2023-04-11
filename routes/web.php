@@ -23,14 +23,6 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 //1. Wildcard name must match the model name + variable name
 Route::get('/post/{post}', [PostController::class, 'show']); //->whereAlpha, ->whereNumeric, options to add constraints to wildcard
 
-Route::get('/categories/{category}', function (Category $category) {
-    return view(view: 'posts', data: [
-        'posts' => $category->posts,
-        'currentCategory' => $category,
-        'categories' => Category::all()
-    ]);
-})->name('category');
-
 Route::get('/authors/{author:username}', function (User $author) {
     return view(view: 'posts', data: [
         'posts' => $author->posts,
