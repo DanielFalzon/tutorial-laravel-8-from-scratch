@@ -12,10 +12,9 @@
     </x-dropdown-item>
 
     @foreach($categories as $category)
-        <x-dropdown-item href="/?category={{ $category->slug }}"
+        <x-dropdown-item href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category')) }}"
                          :active="$category->is($currentCategory)"
-        >
-            {{ ucwords($category->name) }}
+        >{{ ucwords($category->name) }}
         </x-dropdown-item>
     @endforeach
 </x-dropdown>
