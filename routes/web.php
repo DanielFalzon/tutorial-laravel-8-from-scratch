@@ -25,8 +25,7 @@ Route::get('/post/{post}', [PostController::class, 'show']); //->whereAlpha, ->w
 
 Route::get('/authors/{author:username}', function (User $author) {
     return view(view: 'posts', data: [
-        'posts' => $author->posts,
-        'categories' => Category::all()
+        'posts' => $author->posts
     ]);
 });
 
