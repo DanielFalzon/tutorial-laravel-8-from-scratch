@@ -39,7 +39,7 @@
                         </a>
 
                         <div class="space-x-2">
-                            <x-category-button :category="$post->category" />
+                            <x-category-button :category="$post->category"/>
                         </div>
                     </div>
 
@@ -52,6 +52,12 @@
                     </div>
                 </div>
             </article>
+            <section class="col-span-8 col-start-5 space-y-6">
+                <x-post-comment/>
+                <x-post-comment/>
+                <x-post-comment/>
+                <x-post-comment/>
+            </section>
         </main>
     </section>
 </x-layout>
