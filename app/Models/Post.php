@@ -42,7 +42,6 @@ class Post extends Model
 
     //protected $guarded = [] allows any values to be mass-assigned.
     //protected $guarded = ['id'];
-    protected $fillable = ['title', 'excerpt', 'body', 'slug', 'category_id'];
 
     protected $with = ['category', 'author'];
 

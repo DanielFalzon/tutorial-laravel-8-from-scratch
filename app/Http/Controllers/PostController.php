@@ -23,4 +23,6 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
+    //index, show, create, store, edit, update, destroy (always try to stick to these 7 Restful actions as functions when creating a controller)
 }
