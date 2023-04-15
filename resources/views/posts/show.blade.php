@@ -53,7 +53,25 @@
                 </div>
             </article>
             <section class="col-span-8 col-start-5 space-y-6">
-                @foreach($post->comments as $comment)
+                <x-panel>
+
+                    <form action="#" method="post">
+                        @csrf
+                        <header class="flex items-center">
+                            <img class="rounded-full" src="https://i.pravatar.cc/60?u={{ auth()->id() }}" alt="" width="40">
+                            <h2 class="ml-4">Want to Participate</h2>
+                        </header>
+                        <div class="mt-8">
+                            <textarea name="body" id="body" rows="5" class="w-full text-sm focus:outline-none focus:rign" placeholder="Quick, think of something to say!"></textarea>
+                        </div>
+                        <div class="flex justify-end mt-6 border-t border-gray-200 pt-6">
+                            <button class="bg-blue-500 uppercase font-semibold text-xs py-2 px-10 rounded-2xl text-white hover:bg-blue-600" type="submit">Post</button>
+                        </div>
+                    </form>
+
+                </x-panel>
+
+                @foreach($post->comments()->latest()->get() as $comment)
                     <x-post-comment :comment="$comment"/>
                 @endforeach
             </section>
