@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Newsletter;
+use App\Services\NewsletterInterface;
 use Exception;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -14,8 +14,9 @@ class NewsletterController extends Controller
 {
     /**
      * @throws ValidationException
+     * Automatic dependency resolution (DI)
      */
-    public function __invoke(Newsletter $newsletter): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    public function __invoke(NewsletterInterface $newsletter): Application|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         request()->validate([
             'email' => 'required|email'
