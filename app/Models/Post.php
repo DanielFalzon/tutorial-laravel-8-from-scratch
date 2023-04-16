@@ -34,6 +34,11 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
  * @property-read \App\Models\User|null $user
+ * @property-read \App\Models\User $author
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
+ * @property-read int|null $comments_count
+ * @method static \Database\Factories\PostFactory factory($count = null, $state = [])
+ * @method static Builder|Post filter(array $filters)
  * @mixin \Eloquent
  */
 class Post extends Model
