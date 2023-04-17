@@ -29,3 +29,4 @@ Route::post('/login', [SessionsController::class, 'store'])->middleware('guest')
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store'])->middleware('auth');
 
 Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+Route::post('admin/posts/create', [PostController::class, 'store'])->middleware('admin');
