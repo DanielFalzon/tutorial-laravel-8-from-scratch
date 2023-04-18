@@ -38,11 +38,13 @@ class PostController extends Controller
             'title' => 'required',
             'body' => 'required',
             'excerpt' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'thumbnail' => 'required|image'
         ]);
 
         $attributes['user_id'] = auth()->id();
         $attributes['slug'] = Str::slug($attributes['title']);
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnail');
 
         Post::create($attributes);
 
