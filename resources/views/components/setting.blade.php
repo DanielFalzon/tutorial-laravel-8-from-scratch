@@ -12,8 +12,8 @@
             </h4>
             <ul>
                 <li>
-                    <a href="/dashboard" class="{{ request()->is('/dsahboard') ? 'text-blue-500' : '' }}">
-                        Dashboard
+                    <a href="/admin/posts" class="{{ request()->is('/admin/posts') ? 'text-blue-500' : '' }}">
+                        All Posts
                     </a>
                 </li>
 
